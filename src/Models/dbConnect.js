@@ -1,8 +1,8 @@
-const { default: mongoose } = require("mongoose");
+const { mongoose } = require("mongoose");
 
 const dbConnect = async ()=>{
     console.log("[ * ] Conectando ao banco de dados...");
-    let databaseUri
+    let databaseUri;
     try{
         databaseUri = process.env.DATABASE_URI;
     }catch(e){
@@ -17,6 +17,6 @@ const dbConnect = async ()=>{
     }
 
     console.log("[ * ] Banco de dados conectado");
-}
+};
 
 module.exports = dbConnect;

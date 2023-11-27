@@ -4,8 +4,8 @@
   "description": "",
   "main": "App.js",
   "scripts": {
-    "start": "node --watch src/App.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/App.js",
+    "test": "jshint src/. && jest --passWithNoTests"
   },
   "author": "Josivan Sousa",
   "license": "ISC",
@@ -20,5 +20,10 @@
     "mongo-sanitize": "^1.1.0",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jshint": "^2.13.6",
+    "supertest": "^6.3.3"
   }
 }

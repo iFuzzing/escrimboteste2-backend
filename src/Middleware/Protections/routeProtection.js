@@ -1,11 +1,13 @@
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const usersModel = require('../../Models/users.js');
 
 const routeProtection = async (req, res, next)=>{
-    const reqAuthHeader = req.headers['authorization'];
+    const reqAuthHeader = req.headers.authorization;
     if(!reqAuthHeader)
         return res.status(401).json({"mensagem": "Não autorizado"});
 
+    
     const reqToken = reqAuthHeader.split(' ')[1];
 
     let errTokenMsg = "";
@@ -22,13 +24,14 @@ const routeProtection = async (req, res, next)=>{
 
                 let user;
                 try {
-                   user = await usersModel.findOne({email: tokenDecoded.email, access_token: reqToken});
+                   user = await usersModel.findOne({email: tokenDecoded.email});
                 } catch (e) {
                     errTokenMsg = "Não autorizado";
                     return;
                 }
 
-                if(!user){
+                const tokenMath = await bcrypt.compare(reqToken, user.access_token);
+                if(!user || !tokenMath){
                     errTokenMsg = "Sessão inválida";
                     return;
                 }
@@ -43,6 +46,6 @@ const routeProtection = async (req, res, next)=>{
         }
 
         next();
-}
+};
 
 module.exports = routeProtection;

@@ -45,7 +45,7 @@ const userSignup = async (req, res)=>{
     }
 
     const ACCESS_TOKEN_SECRET = process.env.ACCESS_TOKEN_SECRET;
-    const acess_token = jwt.sign({
+    const access_token = jwt.sign({
         "id": user._id,
         "email": user.email
     },
@@ -53,18 +53,18 @@ const userSignup = async (req, res)=>{
     {expiresIn: '30m'}
     );
 
-    user.access_token = acess_token;
+    user.access_token = await bcrypt.hash(access_token, 8);
     await user.save();
 
-    return res.json({
+    return res.status(201).json({
             "id": user._id,
             "data_criacao": user.data_criacao,
             "data_atualizacao": user.data_atualizacao,
             "ultimo_login": user.ultimo_login,
-            "token": user.access_token
+            "token": access_token
         }
     );
-}
+};
 
 const userSignin = async (req, res)=>{
     const errResult = validationResult(req);
@@ -79,7 +79,7 @@ const userSignin = async (req, res)=>{
     try {
        user = await usersModel.findOne({
         "email": email,
-       }) 
+       }); 
     } catch (e) {
        return res.status(500).json({"mensagem": "Não foi possível realizar o login"}); 
     }
@@ -102,7 +102,7 @@ const userSignin = async (req, res)=>{
     );
 
     user.ultimo_login = new Date();
-    user.access_token = access_token; 
+    user.access_token = await bcrypt.hash(access_token, 8); 
     await user.save();
 
     return res.json({
@@ -110,10 +110,10 @@ const userSignin = async (req, res)=>{
             "data_criacao": user.data_criacao,
             "data_atualizacao": user.data_atualizacao,
             "ultimo_login": user.ultimo_login,
-            "token": user.access_token
+            "token": access_token
         }
     );
-}
+};
 
 const userInfo = async (req, res)=>{
 
@@ -136,6 +136,6 @@ const userInfo = async (req, res)=>{
             "telefones": user.telefones,
         }
     );
-}
+};
 
-module.exports = {userSignup, userSignin, userInfo}
+module.exports = {userSignup, userSignin, userInfo};
