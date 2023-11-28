@@ -13,6 +13,8 @@ autenticação (sign in) e recuperação de informações do usuário..
 ```
 ✅ Persistência de dados: MongoDB
 ✅ Gerenciamento de dependências: NPM
+✅ Sistema de build: Esbuild
+✅ Task runner para build: Grunt
 ✅ Padronização de estilo: JsHint
 ✅ Framework: Express
 ✅ Token: JWT
@@ -39,23 +41,31 @@ autenticação (sign in) e recuperação de informações do usuário..
 >URL é opcional ter um valor dentro, mas obrigatório a existência da variável.
 ```bash
 git clone https://github.com/iFuzzing/escrimboteste2-backend.git
+
 #extraia o projeto, depois:
 cd escriboteste2-backend
 
 # configure suas variáveis de ambiente .env, depois:
 npm install
 
-# Testes unitários e teste de padronização de estilo JsHint
-npm test && npm start
+# Apenas testes unitários e JsHint
+npm run test
+
+# Build (testes incluso)
+npm run build
+
+# Start
+npm run start
+
 ```
 ---
 ## :dart: Endpoints
 | Endpoint      | Método | Descrição                                    | Header  |   |
 |---------------|--------|----------------------------------------------|---|---|
-| /users/signin | `POST`   | Autenticação do usuário                      |   |   |
-| /users/signup | `POST`   | Registro de uma nova conta                   |   |   |
-| /users/me     | `GET`    | Obtém informações sobre o usuário autenticado |   Authorization: Barear {token}|   |
-| *     		| `GET`/`POST`| 404 Not found |   |   |
+| /users/signin | `POST`   | Autenticação do usuário                      | Content-Type: application/json  |   |
+| /users/signup | `POST`   | Registro de uma nova conta                   | Content-Type: application/json  |   |
+| /users/me     | `GET`    | Obtém informações sobre o usuário autenticado | Content-Type: application/json <br /><br/>  `Authorization: Barear {token}`|   |
+| *     		| `GET`/`POST`| 404 Not found | Content-type: application/json  |   |
 
 ```mermaid
 graph  TD;  A((Client))-->Request; Request-->404(GET/POST Not found); Request-->Signin(POST Signin: /users/signin); Request-->Signup(POST Signup: /users/signup); Request-->me(GET User info: /users/me); me-->Validation; Signin-->Validation(Middleware: input validation and request logs);  Signup-->Validation;  Validation-->Controller; Controller-->Persistence(Database); Controller--xA; Persistence-->Controller
@@ -65,10 +75,10 @@ graph  TD;  A((Client))-->Request; Request-->404(GET/POST Not found); Request-->
 │   App.js
 │   Server.js
 │
-├───Controllers
-│       users.js
+├───Controllers       
+│       users.js      
 │
-├───Middleware
+├───Middleware        
 │   ├───Logs
 │   │       reqLogs.js
 │   │
