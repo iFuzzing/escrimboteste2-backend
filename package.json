@@ -6,7 +6,8 @@
   "scripts": {
     "build": "grunt build",
     "start": "node dist/bundle.js",
-    "test": "grunt test"
+    "test": "grunt test",
+    "jest": "jest --detectOpenHandles"
   },
   "author": "Josivan Sousa",
   "license": "ISC",

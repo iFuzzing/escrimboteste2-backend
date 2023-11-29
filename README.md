@@ -18,7 +18,7 @@ autenticação (sign in) e recuperação de informações do usuário..
 ✅ Padronização de estilo: JsHint
 ✅ Framework: Express
 ✅ Token: JWT
-🟢 Testes unitários: em progresso
+✅ Testes unitários: Jest 
 ✅ Criptografia hash na senha e token: bcrypt
 ```
 
@@ -75,10 +75,10 @@ graph  TD;  A((Client))-->Request; Request-->404(GET/POST Not found); Request-->
 │   App.js
 │   Server.js
 │
-├───Controllers       
-│       users.js      
+├───Controllers
+│       users.js
 │
-├───Middleware        
+├───Middleware
 │   ├───Logs
 │   │       reqLogs.js
 │   │

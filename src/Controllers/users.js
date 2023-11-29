@@ -9,20 +9,19 @@ const userSignup = async (req, res)=>{
     if(!errResult.isEmpty()){
         return res.status(400).json({'mensagem': `${errResult.array()[0]?.msg}`});
     }
-
+    
     const nome = sanitize(req.body.nome);
     const email = sanitize(req.body.email);
     const senha = await bcrypt.hash(req.body.senha, 8);
     const telefones = req.body.telefones;
-
+    
     let mathUser;
     try {
         mathUser = await usersModel.findOne({
             email: email
         });
-
     } catch (e) {
-       return res.status(500).json({'mensagem': 'Não foi possível verificar usuário'});
+        return res.status(500).json({'mensagem': 'Não foi possível verificar usuário'});
     }
 
     if(mathUser)
