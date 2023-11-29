@@ -25,6 +25,7 @@ autenticação (sign in) e recuperação de informações do usuário..
 
 ## ▶️ Como Executar o Projeto 
 ### Deploy: [https://api-escribo-dev-josivan-sousa.onrender.com](https://api-escribo-dev-josivan-sousa.onrender.com)
+### Wiki de como usar a API (ctrl + click): [WIKI](https://github.com/iFuzzing/escrimboteste2-backend/blob/main/WIKI.md)
 ### Arquivo do [Postman](https://www.postman.com/downloads/) para testar a API: [arquivo.postman_collection.json](https://raw.githubusercontent.com/iFuzzing/escrimboteste2-backend/main/API.postman_collection.json?token=GHSAT0AAAAAACHJOKLTMZLOJNKNTSTYOI3IZLA76MA)
 ---
 ### Localmente:
