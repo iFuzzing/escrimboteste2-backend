@@ -1,5 +1,5 @@
 # Documentação da API
-## Base URL: `https://api-escribo-dev-josivan-sousa.onrender.com`
+## Base URL: [OFF]
 
 
 ## Endpoints

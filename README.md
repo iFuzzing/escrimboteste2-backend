@@ -1,4 +1,5 @@
 # 🚀 Teste Técnico da empresa [Escribo](https://escribo.com/): Desafio 02 
+## 18/12/2023 UPDATE: projeto avaliado e aprovado ✔
 ## 📝 Descrição do Desafio 
 
 Desenvolver uma API RESTful para autenticação de usuários, que permita operações de cadastro (sign up),
@@ -24,9 +25,9 @@ autenticação (sign in) e recuperação de informações do usuário..
 
 
 ## ▶️ Como Executar o Projeto 
-### Deploy: [https://api-escribo-dev-josivan-sousa.onrender.com](https://api-escribo-dev-josivan-sousa.onrender.com)
+### Deploy: [OFF]
 ### Wiki de como usar a API (ctrl + click): [WIKI](https://github.com/iFuzzing/escrimboteste2-backend/blob/main/WIKI.md)
-### Arquivo do [Postman](https://www.postman.com/downloads/) para testar a API: [arquivo.postman_collection.json](https://raw.githubusercontent.com/iFuzzing/escrimboteste2-backend/main/API.postman_collection.json?token=GHSAT0AAAAAACHJOKLTMZLOJNKNTSTYOI3IZLA76MA)
+### Arquivo do [Postman](https://www.postman.com/downloads/) para testar a API: [OFF]
 ---
 ### Localmente:
 > Certifique-se de ter uma arquivo .env dentro do projeto e que nele esteja configurado corretamente suas variáveis de ambiente, são elas:
